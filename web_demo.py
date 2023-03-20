@@ -23,6 +23,11 @@ def predict(input, max_length, top_p, temperature, history=None):
         yield [history] + updates
 
 
+def clear_chat(*text_boxes):
+    for text_box in text_boxes:
+        text_box.value = ""
+
+
 with gr.Blocks() as demo:
     state = gr.State([])
     text_boxes = []
@@ -40,6 +45,8 @@ with gr.Blocks() as demo:
             max_length = gr.Slider(0, 4096, value=2048, step=1.0, label="Maximum length", interactive=True)
             top_p = gr.Slider(0, 1, value=0.7, step=0.01, label="Top P", interactive=True)
             temperature = gr.Slider(0, 1, value=0.95, step=0.01, label="Temperature", interactive=True)
-            button = gr.Button("Generate")
-    button.click(predict, [txt, max_length, top_p, temperature, state], [state] + text_boxes)
+            generate_button = gr.Button("Generate")
+            clear_button = gr.Button("Clear Chat")
+    generate_button.click(predict, [txt, max_length, top_p, temperature, state], [state] + text_boxes)
+    clear_button.click(clear_chat, *text_boxes)
 demo.queue().launch(share=True, inbrowser=True)
