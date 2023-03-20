@@ -1,5 +1,5 @@
 # ChatGLM-6B-Int4-Web-Demo
-[![Gradio App](https://img.shields.io/badge/launch-gradio%20app-blue)](https://gradio.app/hub/1uLVlsH7bRgvCxdrv_6OkBz4BNqvpjEk4) <-- press here to launch the web demo
+[![Launch in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<username>/<repository>/blob/master/colab_button.md) <-- press here to launch the web demo
 
 ## About ChatGLM
 
